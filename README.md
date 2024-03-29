@@ -12,7 +12,6 @@ U-Net improves on the FCN, using a somewhat similar design, but differing in som
 ### Model Details
 
 <img src="images/unet.png" style="width:700px;height:400;">
-<caption><center> <u><b> Figure 2 </u></b>: U-Net Architecture<br> </center></caption>
 
 **Contracting path** (Encoder containing downsampling steps):
 
@@ -33,3 +32,13 @@ Next is a concatenation with the correspondingly cropped feature map from the co
 **Final Feature Mapping Block**: In the final layer, a 1x1 convolution is used to map each 64-component feature vector to the desired number of classes. The channel dimensions from the previous layer correspond to the number of filters used, so when you use 1x1 convolutions, you can transform that dimension by choosing an appropriate number of 1x1 filters. When this idea is applied to the last layer, you can reduce the channel dimensions to have one layer per class. 
 
 The U-Net network has 23 convolutional layers in total.
+
+### Encoder (Downsampling Block) 
+
+<img src="images/encoder.png" style="width:500px;height:500;">
+
+### Decoder (Upsampling Block)
+
+The decoder, or upsampling block, upsamples the features back to the original image size. At each upsampling level, you'll take the output of the corresponding encoder block and concatenate it before feeding to the next decoder block.
+
+<img src="images/decoder.png" style="width:500px;height:500;">
